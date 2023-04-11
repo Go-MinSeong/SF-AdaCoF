@@ -12,9 +12,8 @@ from pytube import YouTube
 import cv2
 import time
 import math
+import sys
 import subprocess
-# 여기도 바꿔주면 감사링. 
-from dancing.AdaCoF_4_2 import models
 
 parser = argparse.ArgumentParser(description='Video Interpolation')
 
@@ -35,7 +34,7 @@ parser.add_argument('--output_video', type=str, default='/home/work/capstone/Fin
 
 # 아래 여섯개만 부분 설정 바랍니다.
 parser.add_argument('--used_data', type=str, default = "dancing") # 실험할 데이터 설정
-parser.add_argument('--model_type', type=str, default='AdaCoF_4_2') # 여기서 실험할 모델 설정
+parser.add_argument('--model_type', type=str, default='AdaCoF_4-2') # 여기서 실험할 모델 설정
 parser.add_argument('--checkpoint_number', type=str, default='60') # 실험할 체크포인트 넘버 설정
 # 아래는 기존에 있는 파일로 진행할지 유튜브에서 가져올지에 대한 것입니다.
 # 둘 중 하나는 무조건 None으로 처리 부탁합니다.
@@ -55,6 +54,9 @@ def to_variable(x):
 
 def main():
     args = parser.parse_args()
+    model_dir = "./"+args.used_data+"/"+args.model_type
+    sys.path.append(model_dir)
+    import models
     torch.cuda.set_device(args.gpu_id)
     # checkpoint model 설정
     checkpoint = "/home/work/capstone/Final/"+args.used_data+"/"+args.model_type+"/model"+ args.checkpoint_number+".pth"

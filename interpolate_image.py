@@ -6,8 +6,7 @@ import torch
 from torchvision import transforms
 from torchvision.utils import save_image as imwrite
 from torch.autograd import Variable
-# 여기도 바꿔주면 감사링.
-from dancing.AdaCoF_ori import models
+import sys
 
 parser = argparse.ArgumentParser(description='Two-frame Interpolation')
 
@@ -23,7 +22,8 @@ parser.add_argument('--output_image', type=str, default='/home/work/capstone/Fin
 
 # 아래 세개만 부분 설정 바랍니다.
 parser.add_argument('--used_data', type=str, default = "dancing") # 실험할 데이터 설정
-parser.add_argument('--model_type', type=str, default='AdaCoF_ori') # 여기서 실험할 모델 설정
+parser.add_argument('--model_type', type=str, default='AdaCoF_4-2') # 여기서 실험할 모델 설정
+
 parser.add_argument('--checkpoint_number', type=str, default='60') # 실험할 체크포인트 넘버 설정
 # parser.add_argument('--first_frame', type=str, default='./sample_twoframe/0.png')
 # parser.add_argument('--second_frame', type=str, default='./sample_twoframe/1.png')
@@ -40,9 +40,11 @@ def to_variable(x):
         x = x.cuda()
     return Variable(x)
 
-
 def main():
     args = parser.parse_args()
+    model_dir = "./"+args.used_data+"/"+args.model_type
+    sys.path.append(model_dir)
+    import models
     torch.cuda.set_device(args.gpu_id)
     checkpoint = "/home/work/capstone/Final/"+args.used_data+"/"+args.model_type+"/model"+ args.checkpoint_number+".pth"
     print(checkpoint)
