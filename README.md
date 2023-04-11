@@ -4,128 +4,128 @@
 
 <h5 align="center"> Capstone Project  (2022-09 ~ ing) </h5>
 
+* This repository is still a work in progress.
+
 `VideoFrameInterpolation_Dance` is the Image interpolation is the process of estimating new pixel values in an image based on the values of surrounding pixels.
 We want to perform this image interpolation using computer vision techniques.
 We want to focus on interpolation in an image with an object in the center.
 
+<p align="center"> 
+<img src="gif/뉴진스-NewJeans-_Hype-boy_-DANCECOVER-_-안무-거울모드-_-MIRROREDbefore.gif" alt="Animated gif pacman game" height="360px", width="448px">
+</p>
+<p align="center"> 
+<img src="gif/뉴진스-NewJeans-_Hype-boy_-DANCECOVER-_-안무-거울모드-_-MIRROREDafter.gif" alt="Animated gif pacman game" height="360px", width="448px">
+</p>
+
+
 ![stronghold logo](img/interpolation_image1.png)
 ![stronghold logo](img/interpolation_image2.png)
 
+
 The photo above shows an image from an earlier point in time, an interpolated image, and an image from a later point in time. The interpolated image is created from the images from the earlier and later viewpoints.
+
+** I'll post the interpolated gif after I get permission from the video's copyright holder. **
+
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
+
+
+<h2> Project Files Description </h2>
+
+<h4>Directories:</h4>
+<ul>
+  <li><b> dancing folder </b> - Inside the dancing folder, there are folders of models(AdaCoF_ori, AdaCoF_1, AdaCoF_2, AdaCoF_3, AdaCoF_4-2, AdaCoF_5-2) trained with dancing data, each trained in a different way.
+  And inside each model folder, we have the model folder, train.py, and trainer.py needed to train the model, and we have the model trained to 50 epochs and 60 epochs.
+
+
+  <li><b>vimeo folder</b> - The model folder trained with vimeo data is organized like the Vimeo folder.</li>
+
+
+  <li><b>interpolate_img folder</b> - This is the folder that contains the before and after images for each model.</li>
+
+
+  <li><b>interpolate_video folder</b> - This is the folder that contains the before and after videos for each model.</li>
+
+
+  <li><b>output test</b> - This is the folder where you save the results of your image interpolation.</li>
+
+
+  <li><b>output_youtube_test</b> - Foldup of the interpolation result of Youtube data with a model trained on Dancing data.</li>
+
+
+  <li><b>output_youtube_test_vimeo</b> - Foldup of the interpolation result of Youtube data with a model trained on Vimeo data.</li>
+</ul>
+
+
+
+<h4>Executable Files:</h4>
+<ul>
+  <li><b> interpolate_image.py </b> - A pyfile that runs image interpolation after specifying a particular model.
+
+
+  <li><b> interpolate_video.py </b> - A pyfile that runs video interpolation after specifying a particular model.</li>
+
+
+  <li><b>evaluation.py </b> - A pyfile that calculates the PSNR, SSIM score of a model by specifying a specific model and dataset.</li>
+
+
+  <li><b>MakeTripletset.py </b> - A pyfile that builds images into tripletsets at specific intervals.</li>
+
+
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
 
 # Model Pipeline
+-   The pipeline of our final proposed model.
 
 ![stronghold logo](img/model.png)
 
+The main techniques of the model are described below.
+1. Progress in two directions
+2. Models that can inject image differencing information
 
 
+# Model evaluation
+-   Below is a table of results from evaluating the different models we devised on different datasets.
 
+Adacof_ori refers to the original Adacof model and the other models are the models we devised.
 
+- Dancing data로 학습한 모델의 결과표입니다.
+![stronghold logo](img/evaluation1.png)
 
+- Vimeo data로 학습한 모델의 결과표입니다.
+![stronghold logo](img/evaluation2.png)
 
-
-# evaluation.py
-1) pip install scikit-image==0.16.2 설치
-2) cd Final 폴더로 이동
-3) Davis, Middlebury_others,ucf101은 test_input에 있음.
-4) parser를 이용해서 각 모델_dir,checkpoint에 알맞는 dir 값을 줌
-5) 실행
-
-<p align="center"> 
-  <img src="image/Email Logo.png" alt="Email Logo.png" width="80px" height="80px">
-</p>
-<h1 align="center"> Spam Detector </h1>
-<h3 align="center"> COMP 6721 - Artificial Intelligence </h3>
-<h5 align="center"> Project Assignment 2 - <a href="https://www.concordia.ca/">Concordia University</a> (Winter 2020) </h5>
-
-<p align="center"> 
-<img src="gif/spam detector.gif" alt="Animated gif pacman game" height="382px">
-</p>
-
-<p>I have developed a spam detector program in Python which classifies given emails as spam or ham using the Naive Bayes approach.</p>
-
-<h2> :floppy_disk: Project Files Description</h2>
-
-<p>This Project includes 3 executable files, 3 text files as well as 2 directories as follows:</p>
-<h4>Executable Files:</h4>
-<ul>
-  <li><b>spam_detector.py</b> - Includes all functions required for classification operations.</li>
-  <li><b>train.py</b> - Uses the functions defined in the spam_detector.py file and generates the model.txt file after execution.</li>
-  <li><b>test.py</b> - Uses the functions defined in the spam_detector.py file and, after execution, generates the result.txt as well as evaluation.txt files.</li>
-</ul>
-
-<h4>Output Files:</h4>
-<ul>
-  <li><b>model.txt</b> - Contains information about the vocabularies of the train set, such as the frequency and conditional probability of each word in Spam and Ham classes.</li>
-  <li><b>result.txt</b> - Contains information about the classified emails of the test set.</li>
-  <li><b>evaluation.txt</b> - Contains evaluation results table as well as Confusion Matrix of Spam and Ham classes.</li>
-</ul>
-
-<h4>Source Directories:</h4>
-<ul>
-  <li><b>train directory</b> - Includes all emails for the training phase of the program.</li>
-  <li><b>test directory</b> - Includes all emails for the testing phase of the program.</li>
-</ul>
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-<h2> :book: Naive Bayes</h2>
-
-<p>In machine learning, naive Bayes classifiers are a family of simple "probabilistic classifiers" based on applying Bayes' theorem with strong (naive) independence assumptions between the features.
-Abstractly, naive Bayes is a conditional probability model: given a problem instance to be classified, represented by a vector
-<img src="image/1.png" alt="Formula 1" style="max-width:100%;"></p>
-
-<p>representing some n features (independent variables), it assigns to this instance probabilities
-<img src="image/2.png" alt="Formula 2" style="max-width:100%;"></p>
-
-<p>The problem with the above formulation is that if the number of features n is large or if a feature can take on a large number of values, then basing such a model on probability tables is infeasible. We therefore reformulate the model to make it more tractable. Using Bayes' theorem, the conditional probability can be decomposed as
-<img src="image/3.png" alt="Formula 3" style="max-width:100%;"></p>
-
-![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
-
-<h2> :clipboard: Execution Instruction</h2>
-<p>The order of execution of the program files is as follows:</p>
-<p><b>1) spam_detector.py</b></p>
-<p>First, the spam_detector.py file must be executed to define all the functions and variables required for classification operations.</p>
-<p><b>2) train.py</b></p>
-<p>Then, the train.py file must be executed, which leads to the production of the model.txt file. 
-At the beginning of this file, the spam_detector has been imported so that the functions defined in it can be used.</p>
-<p><b>3) test.py</b></p>
-<p>Finally, the test.py file must be executed to create the result.txt and evaluation.txt files.
-Just like the train.py file, at the beginning of this file, the spam_detector has been imported so that the functions defined in it can be used.</p>
-
-![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
-
-<h2> :books: References</h2>
+<h2> Paper References</h2>
 <ul>
-  <li><p>Jonathan Lee, 'Notes on Naive Bayes Classifiers for Spam Filtering'. [Online].</p>
-      <p>Available: https://courses.cs.washington.edu/courses/cse312/18sp/lectures/naive-bayes/naivebayesnotes.pdf</p>
+  <li><p>	CVPR 2020 Computer Vision and Pattern Recognition (cs.CV)	arXiv:1907.10244 [cs.CV], 'AdaCoF: Adaptive Collaboration of Flows for Video Frame Interpolation' [Online].</p>
+      <p>Available: https://arxiv.org/abs/1907.10244</p>
   </li>
-  <li><p>Wikipedia.org, 'Naive Bayes Classifier'. [Online].</p>
-      <p>Available: https://en.wikipedia.org/wiki/Naive_Bayes_classifier</p>
+
+</ul>
+
+<h2> Code References</h2>
+<ul>
+  <li><p>	HyeongminLEE
+, 'AdaCoF-pytorch' [Online].</p>
+      <p>Available: https://github.com/HyeongminLEE/AdaCoF-pytorch</p>
   </li>
-  <li><p>Youtube.com, 'Naive Bayes for Spam Detection'. [Online].</p>
-      <p>Available: https://www.youtube.com/watch?v=8aZNAmWKGfs</p>
+
+</ul>
+
+
+
+<h2> Dataset References</h2>
+<ul>
+  <li><p>Korea Intelligent and Information Society Agency, 'K-pop choreography video' [Online].</p>
+      <p>Available: https://aihub.or.kr/aihubdata/data/view.do?currMenu=115&topMenu=100&dataSetSn=52</p>
   </li>
-  <li><p>Youtube.com, 'Text Classification Using Naive Bayes'. [Online].</p>
-      <p>Available: https://www.youtube.com/watch?v=EGKeC2S44Rs</p>
-  </li>
-  <li><p>Manisha-sirsat.blogspot.com, 'What is Confusion Matrix and Advanced Classification Metrics?'. [Online].</p>
-      <p>Available: https://manisha-sirsat.blogspot.com/2019/04/confusion-matrix.html</p>
-  </li>
-  <li><p>Pythonforengineers.com, 'Build a Spam Filter'. [Online].</p>
-      <p>Available: https://www.pythonforengineers.com/build-a-spam-filter/</p>
+  <li><p>IJCV 2019
+Video Enhancement with Task-Oriented Flow, 'Vimeo Triplet dataset (for temporal frame interpolation)'. [Online].</p>
+      <p>Available: http://toflow.csail.mit.edu/</p>
   </li>
 </ul>
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
-
-<!-- CREDITS -->
-<h2 id="credits"> :scroll: Credits</h2>
-
-Mohammad Amin Shamshiri
-
-[![GitHub Badge](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/ma-shamshiri)
-[![Twitter Badge](https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/ma_shamshiri)
-[![LinkedIn Badge](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/ma-shamshiri)
