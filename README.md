@@ -87,7 +87,7 @@ The main techniques of the model are described below.
 # Model evaluation
 -   Below is a table of results from evaluating the different models we devised on different datasets.
 
-Adacof_ori refers to the original Adacof model and the other models are the models we devised.
+'원본 Adacof' refers to the original Adacof model and the other models are the models we devised.
 
 - Dancing data로 학습한 모델의 결과표입니다.
 ![stronghold logo](img/evaluation1.png)
@@ -95,6 +95,8 @@ Adacof_ori refers to the original Adacof model and the other models are the mode
 - Vimeo data로 학습한 모델의 결과표입니다.
 ![stronghold logo](img/evaluation2.png)
 
+
+<h5>We found that our method produced a model with better performance and less computation than the original Adacof model!</h5>
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
