@@ -1,4 +1,4 @@
-<h1 align="center"> VideoFrameInterpolation_Dance </h1>
+# VideoFrameInterpolation_Dance
 
 <h1 align="center"> VFI Model </h1>
 
