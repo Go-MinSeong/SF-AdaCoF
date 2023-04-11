@@ -10,6 +10,9 @@
 We want to perform this image interpolation using computer vision techniques.
 We want to focus on interpolation in an image with an object in the center.
 
+We build a new model based on the existing video frame interpolation model "AdaCoF: Adaptive Collaboration of Flows for Video Frame Interpolation".
+`We propose a video frame interpolation model that can be more motion-oriented and object-oriented for dance data, expecting to improve performance and reduce parameters with the new model.`
+
 <p align="center"> 
 <img src="gif/뉴진스-NewJeans-_Hype-boy_-DANCECOVER-_-안무-거울모드-_-MIRROREDbefore.gif" alt="Animated gif pacman game" height="360px", width="448px">
 </p>
