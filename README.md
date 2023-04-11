@@ -89,10 +89,10 @@ The main techniques of the model are described below.
 
 '원본 Adacof' refers to the original Adacof model and the other models are the models we devised.
 
-- Dancing data로 학습한 모델의 결과표입니다.
+- The result table of the model trained on the dancing data.
 ![stronghold logo](img/evaluation1.png)
 
-- Vimeo data로 학습한 모델의 결과표입니다.
+- The result table of the model trained on the vimeo data.
 ![stronghold logo](img/evaluation2.png)
 
 
