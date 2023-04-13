@@ -1,6 +1,7 @@
-# VideoFrameInterpolation_Dance
-
+#VideoFrameInterpolation_Dance
 <h1 align="center"> VideoFrameInterpolation </h1>
+
+<h1 align="center"> VFI Model </h1>
 
 <h5 align="center"> Capstone Project  (2022-09 ~ ing) </h5>
 
