@@ -81,9 +81,8 @@ The photo above shows an image from an earlier point in time, an interpolated im
 
 
 # Model Pipeline
--   The pipeline of our final proposed model.
-
-![stronghold logo](img/model.png)
+-   The pipeline of our final proposed model is AdaCoF4-2. 
+  **I'll post the model pipeline figure after **
 
 The main techniques of the model are described below.
 1. Progress in two directions
