@@ -16,13 +16,10 @@ We want to focus on interpolation in an image with an object in the center.
 We build a new model based on the existing video frame interpolation model "AdaCoF: Adaptive Collaboration of Flows for Video Frame Interpolation".
 `We propose a video frame interpolation model that can be more motion-oriented and object-oriented for dance data, expecting to improve performance and reduce parameters with the new model.`
 
-<p align="center"> 
-<img src="gif/뉴진스-NewJeans-_Hype-boy_-DANCECOVER-_-안무-거울모드-_-MIRROREDbefore.gif" alt="Animated gif pacman game" height="360px", width="448px">
+<p float="center">
+  <img src="gif/MIRRORED_-Brave-Girls_브레이브-걸스_-Rollin’-안무-거울모드before.gif" alt="Animated gif pacman game" height="360px" width="448px" />
+  <img src="gif/MIRRORED_-Brave-Girls_브레이브-걸스_-Rollin’-안무-거울모드after.gif" alt="Animated gif pacman game" height="360px" width="448px" />
 </p>
-<p align="center"> 
-<img src="gif/뉴진스-NewJeans-_Hype-boy_-DANCECOVER-_-안무-거울모드-_-MIRROREDafter.gif" alt="Animated gif pacman game" height="360px", width="448px">
-</p>
-
 
 ![stronghold logo](img/interpolation_image1.png)
 ![stronghold logo](img/interpolation_image2.png)
