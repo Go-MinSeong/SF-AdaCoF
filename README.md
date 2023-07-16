@@ -1,6 +1,4 @@
-# VideoFrameInterpolation_Dance
-
-
+<h1 align = "center"> VideoFrameInterpolation_Dance </h1>
 
 <h1 align="center"> VideoFrameInterpolation </h1>
 
