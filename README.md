@@ -1,6 +1,4 @@
-# VideoFrameInterpolation_Dance
-
-
+<h1 align = "center"> VideoFrameInterpolation_Dance </h1>
 
 <h1 align="center"> VideoFrameInterpolation </h1>
 
@@ -123,7 +121,6 @@ The main techniques of the model are described below.
   </li>
 
 </ul>
-
 
 
 <h2> Dataset References</h2>
