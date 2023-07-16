@@ -126,7 +126,6 @@ The main techniques of the model are described below.
 </ul>
 
 
-
 <h2> Dataset References</h2>
 <ul>
   <li><p>Korea Intelligent and Information Society Agency, 'K-pop choreography video' [Online].</p>
