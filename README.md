@@ -101,7 +101,7 @@ SF-AdaCoF의 핵심 기술은 다음과 같습니다.
 
 1. 이전 이후 이미지가 각각의 처리를 거칩니다.
 2. 이전 이후 이미지는 U-NET 구조를 거치며 featuremap differencing을 통해 서로 정보를 주고 받습니다.
-3. 
+
   + 각 U-Net의 Encoder부분에서는 가중치를 공유합니다.
 
 
@@ -109,6 +109,7 @@ SF-AdaCoF의 핵심 기술은 다음과 같습니다.
 -   Below is a table of results from evaluating the different models we devised on different datasets.
 
 '원본 Adacof' refers to the original Adacof model and the other models are the models we devised.
+
 아래는 다양한 데이터 셋으로 우리의 모델을 평가한 그림입니다.
 
 ![stronghold logo](img/Result.png)
