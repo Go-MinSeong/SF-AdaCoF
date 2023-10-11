@@ -49,11 +49,9 @@ The photo above shows an image from an earlier point in time, an interpolated im
 
 <h4>Directories:</h4>
 <ul>
-  <li><b> dancing folder </b> - Inside the dancing folder, there are folders of models(AdaCoF_ori, AdaCoF_1, AdaCoF_2, AdaCoF_3, AdaCoF_4-2, AdaCoF_5-2) trained with dancing data, each trained in a different way.
+  
+  <li><b> vimeo folder </b> - Inside the dancing folder, there are folders of models(AdaCoF_all_share, AdaCoF_ori, AdaCoF_1, AdaCoF_2, AdaCoF_3, AdaCoF_4-2, AdaCoF_5-2 etc..) trained with vimeo data, each trained in a different way.
   And inside each model folder, we have the model folder, train.py, and trainer.py needed to train the model, and we have the model trained to 50 epochs and 60 epochs.
-
-
-  <li><b>vimeo folder</b> - The model folder trained with vimeo data is organized like the Vimeo folder.</li>
 
 
   <li><b>interpolate_img folder</b> - This is the folder that contains the before and after images for each model.</li>
@@ -62,19 +60,13 @@ The photo above shows an image from an earlier point in time, an interpolated im
   <li><b>interpolate_video folder</b> - This is the folder that contains the before and after videos for each model.</li>
 
 
-  <li><b>output test</b> - This is the folder where you save the results of your image interpolation.</li>
-
-
-  <li><b>output_youtube_test</b> - Foldup of the interpolation result of Youtube data with a model trained on Dancing data.</li>
-
-
-  <li><b>output_youtube_test_vimeo</b> - Foldup of the interpolation result of Youtube data with a model trained on Vimeo data.</li>
 </ul>
 
 
 
 <h4>Executable Files:</h4>
 <ul>
+  
   <li><b> interpolate_image.py </b> - A pyfile that runs image interpolation after specifying a particular model.
 
 
