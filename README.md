@@ -37,8 +37,8 @@ As you can see, the right video is much smoother and looks quite natural.
 
 
 The photo above shows an image from an earlier point in time, an interpolated image, and an image from a later point in time. The interpolated image is created from the images from the earlier and later viewpoints.
+위에 이미지는 이전 시점, 가운데 시점, 이후 시점의 프레임입니다. 가운데 이미지는 양 옆의 이미지로부터 생성되었습니다.
 
-** I'll post the interpolated gif after I get permission from the video's copyright holder. **
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
@@ -89,19 +89,26 @@ The photo above shows an image from an earlier point in time, an interpolated im
 
 
 # Model Pipeline
--   The pipeline of our final proposed model is AdaCoF4-2. 
-  **I'll post the model pipeline figure after **
+-   The pipeline of our final proposed model is SF-AdaCoF. 
+![stronghold logo](img/PROCESS.png)
 
 The main techniques of the model are described below.
 1. Progress in two directions
 2. Models that can inject Featuremap differencing information
++ Gradient sharing
+SF-AdaCoF의 핵심 기술은 다음과 같습니다.
+1. 이전 이후 이미지가 각각의 처리를 거칩니다.
+2. 이전 이후 이미지는 U-NET 구조를 거치며 featuremap differencing을 통해 서로 정보를 주고 받습니다.
++ 각 U-Net의 Encoder부분에서는 가중치를 공유합니다.
 
 
 # Model evaluation
 -   Below is a table of results from evaluating the different models we devised on different datasets.
 
 '원본 Adacof' refers to the original Adacof model and the other models are the models we devised.
+아래는 다양한 데이터 셋으로 우리의 모델을 평가한 그림입니다.
 
+![stronghold logo](img/Result.png)
 
 
 <h5>We found that our method produced a model with better performance and less computation than the original Adacof model!</h5>
