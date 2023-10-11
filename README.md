@@ -112,6 +112,10 @@ SF-AdaCoF의 핵심 기술은 다음과 같습니다.
   + 각 U-Net의 Encoder부분에서는 가중치를 공유합니다.
 
 
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
+
+
+
 # Model evaluation
 -   Below is a table of results from evaluating the different models we devised on different datasets.
 
