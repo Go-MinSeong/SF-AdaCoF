@@ -40,6 +40,8 @@ The photo above shows an image from an earlier point in time, an interpolated im
 위에 이미지는 이전 시점, 가운데 시점, 이후 시점의 프레임입니다. 가운데 이미지는 양 옆의 이미지로부터 생성되었습니다.
 
 
+
+
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
 
@@ -85,6 +87,8 @@ The photo above shows an image from an earlier point in time, an interpolated im
   <li><b>MakeTripletset.py </b> - A pyfile that builds images into tripletsets at specific intervals.</li>
 
 
+
+
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
 
@@ -116,9 +120,12 @@ SF-AdaCoF의 핵심 기술은 다음과 같습니다.
 아래는 다양한 데이터 셋으로 우리의 모델을 평가한 그림입니다.
 
 ![stronghold logo](img/Result.png)
+![stronghold logo](img/Result2.png)
 
 
 <h5>We found that our method produced a model with better performance and less computation than the original Adacof model!</h5>
+
+
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
