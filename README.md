@@ -15,6 +15,11 @@ We want to focus on interpolation in an image with an object in the center.
 We build a new model based on the existing video frame interpolation model "AdaCoF: Adaptive Collaboration of Flows for Video Frame Interpolation".
 `We propose a video frame interpolation model that can be more motion-oriented and object-oriented for dance data, expecting to improve performance and reduce parameters with the new model.`
 
+비디오 프레임 보간은 이전 이후 프레임을 이용하여 가운데 프레임을 추정하는 작업입니다.
+우리는 컴퓨터 비전 기술을 이용하여 이를 수행하였습니다.
+
+우리는 기존 "AdaCoF: Adaptive Collaboration of Flows for Video Frame Interpolation"을 기반으로 하여 새로운 video frame interpolation deeplearning model을 제작하였습니다.
+
 <p float="center">
   <img src="gif/MIRRORED_-Brave-Girls_브레이브-걸스_-Rollin’-안무-거울모드before.gif" alt="Animated gif pacman game" height="240px" width="360px" />
   <img src="gif/MIRRORED_-Brave-Girls_브레이브-걸스_-Rollin’-안무-거울모드after.gif" alt="Animated gif pacman game" height="240px" width="360px" />
@@ -23,6 +28,9 @@ We build a new model based on the existing video frame interpolation model "AdaC
 The video file on the left was extracted from YouTube and changed to 12 FPS. We then used our model to interpolate the images to create the right video file at 24 FPS.
 
 As you can see, the right video is much smoother and looks quite natural.
+
+위에 보이는 gif파일은 왼쪽은 유튜브 영상에서 12FPS로 추출한 영상이고 오른쪽은 왼쪽 영상을 이용해 24FPS로 제작한 영상입니다.
+오른쪽의 영상이 더욱 부드러운 것을 확인할 수 있습니다.
 
 ![stronghold logo](img/interpolation_image1.png)
 ![stronghold logo](img/interpolation_image2.png)
