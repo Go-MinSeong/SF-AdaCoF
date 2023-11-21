@@ -21,20 +21,18 @@ parser.add_argument('--gpu_id', type=int, default=0)
 
 parser.add_argument('--model', type=str, default='model') # adacof 
 
-parser.add_argument('--config', type=str, default='/home/work/capstone/Final/config.txt')
-
 parser.add_argument('--kernel_size', type=int, default=5)
 parser.add_argument('--dilation', type=int, default=1)
 
 parser.add_argument('--index_from', type=int, default=0, help='when index starts from 1 or 0 or else')
 parser.add_argument('--zpad', type=int, default=4, help='zero padding of frame name.')
 
-parser.add_argument('--input_video', type=str, default='/home/work/capstone/Final/interpolate_video/Before/') # 보간 전 영상 집합소
-parser.add_argument('--output_video', type=str, default='/home/work/capstone/Final/interpolate_video/After/') # 보간 후 영상 집합소
+parser.add_argument('--input_video', type=str, default='/interpolate_video/Before/') # 보간 전 영상 집합소
+parser.add_argument('--output_video', type=str, default='/interpolate_video/After/') # 보간 후 영상 집합소
 
 # 아래 여섯개만 부분 설정 바랍니다.
-parser.add_argument('--used_data', type=str, default = "dancing") # 실험할 데이터 설정
-parser.add_argument('--model_type', type=str, default='AdaCoF_4-2') # 여기서 실험할 모델 설정
+parser.add_argument('--used_data', type=str, default = "vimeo") # 실험할 데이터 설정
+parser.add_argument('--model_type', type=str, default='AdaCoF_all_share') # 여기서 실험할 모델 설정
 parser.add_argument('--checkpoint_number', type=str, default='60') # 실험할 체크포인트 넘버 설정
 # 아래는 기존에 있는 파일로 진행할지 유튜브에서 가져올지에 대한 것입니다.
 # 둘 중 하나는 무조건 None으로 처리 부탁합니다.
@@ -50,8 +48,6 @@ def to_variable(x):
         x = x.cuda()
     return Variable(x)
 
-
-
 def main():
     args = parser.parse_args()
     model_dir = "./"+args.used_data+"/"+args.model_type
@@ -59,10 +55,10 @@ def main():
     import models
     torch.cuda.set_device(args.gpu_id)
     # checkpoint model 설정
-    checkpoint = "/home/work/capstone/Final/"+args.used_data+"/"+args.model_type+"/model"+ args.checkpoint_number+".pth"
+    checkpoint = "/"+args.used_data+"/"+args.model_type+"/model"+ args.checkpoint_number+".pth"
 
     if args.video_absense == None and args.video_url == None:
-        raise Exception("위에서 둘 중 하나는 None이라고 해달랬잖아요 !.!")
+        raise Exception("위에서 둘 중 하나만 None으로 설정해주세요")
     else:
         # 영상 다운로드
         if args.video_absense == None:
@@ -124,25 +120,9 @@ def main():
         #os.remove(filepath)
 
 
-# 여기부터 재작업 필요. 위에까지는 데이터 전처리 영상 불러와서 이미지로 변환
-# 이후 이미지를 모델에 넣어서 보간 코드는 아래 
+    # 여기부터 재작업 필요. 위에까지는 데이터 전처리 영상 불러와서 이미지로 변환
+    # 이후 이미지를 모델에 넣어서 보간 코드는 아래 
 
-    config_file = open(args.config, 'r')
-    while True:
-        line = config_file.readline()
-        if not line:
-            break
-        if line.find(':') == 0:
-            continue
-        else:
-            tmp_list = line.split(': ')
-            if tmp_list[0] == 'kernel_size':
-                args.kernel_size = int(tmp_list[1])
-            if tmp_list[0] == 'flow_num':
-                args.flow_num = int(tmp_list[1])
-            if tmp_list[0] == 'dilation':
-                args.dilation = int(tmp_list[1])
-    config_file.close()
     model_path = args.used_data+"."+args.model_type+".models."
     model = models.Model(args, model_path)
 
