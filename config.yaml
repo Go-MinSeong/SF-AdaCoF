@@ -3,7 +3,7 @@ input_folder : '/home/kms990321/DiffBIR/project/frames_sub'
 # 결과물을 모아둘 폴더
 output_folder : '/home/kms990321/DiffBIR/project/frames_sub'
 # 모델 결정
-model_type : 'AdaCoF_all_share'
+model_type : 'SF_AdaCoF'
 # 모델 학습 pth 결정  you can choose 50(just train with l1 loss) or 60(+10 train with gan loss)
 checkpoint_number : '60'
 
