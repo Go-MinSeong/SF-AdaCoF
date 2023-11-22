@@ -174,7 +174,10 @@ def main():
         print("전체 ",count,"장 중 ", number, "장을 출력했습니다.")
         print(stream.title, "  사진으로 변환 완료했습니다.")
         video.release()
-
+    try:
+        print(FPS)
+    except:
+        FPS = args.frame
     model_dir = "./"+args.used_data+"/"+args.model_type
     sys.path.append(model_dir)
     import models
@@ -205,9 +208,9 @@ def main():
 
         if args.repeat == 1:
             imwrite(frame1.clone(), os.path.join(args.output_folder,str((file_id+1)*2-1)+".png"), range=(0, 1))
-            imwrite(frame_out.clone(), os.path.join(args.output_folder,str((file_id+1)+1)+".png"), range=(0, 1))
+            imwrite(frame_out.clone(), os.path.join(args.output_folder,str((file_id+1)*2)+".png"), range=(0, 1))
             if file_id == len(file_lst)-1:
-                imwrite(frame2.clone(), os.path.join(args.output_folder,str((file_id+1)+2)+".png"), range=(0, 1))
+                imwrite(frame2.clone(), os.path.join(args.output_folder,str((file_id+1)*2+1)+".png"), range=(0, 1))
             continue;
         elif args.repeat == 2:
             frame_out_prev = model(frame1, frame_out)
@@ -228,10 +231,10 @@ def main():
 
     if args.mp4_save == True:
         create_video_from_png(args.output_folder, os.path.join(args.output_folder, "after.mp4"), change_fps)
-        create_video_from_png(args.input_folder, os.path.join(args.output_folder, "before.mp4"), change_fps)
+        create_video_from_png(args.input_folder, os.path.join(args.output_folder, "before.mp4"), FPS)
     if args.gif_save == True:
         convert_mp4_to_gif(os.path.join(args.output_folder, "after.mp4"), os.path.join(args.output_folder, "after.mp4").split('.')[0]+".gif", change_fps)
-        convert_mp4_to_gif(os.path.join(args.output_folder, "before.mp4"), os.path.join(args.output_folder, "before.mp4").split('.')[0]+".gif", change_fps)
+        convert_mp4_to_gif(os.path.join(args.output_folder, "before.mp4"), os.path.join(args.output_folder, "before.mp4").split('.')[0]+".gif", FPS)
 
 if __name__ == "__main__":
     main()
