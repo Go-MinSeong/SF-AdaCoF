@@ -62,7 +62,6 @@ The photo above shows an image from an earlier point in time, an interpolated im
 
   <li><b>interpolate_video folder</b> - This is the folder that contains the before and after videos for each model.</li>
 
-
 </ul>
 
 
@@ -75,11 +74,12 @@ The photo above shows an image from an earlier point in time, an interpolated im
 
   <li><b> interpolate_video.py </b> - A pyfile that runs video interpolation after specifying a particular model.</li>
 
+  <li><b> (New) interpolate_inference.py </b> - A pyfile that runs folder or video or Youtube URL interpolation after specifying a particular model. you can choose various option from config.yaml for interpolation. If you want to inference this code, I recommend you use this. </li>
 
-  <li><b>evaluation.py </b> - A pyfile that calculates the PSNR, SSIM score of a model by specifying a specific model and dataset.</li>
+  <li><b> evaluation.py </b> - A pyfile that calculates the PSNR, SSIM score of a model by specifying a specific model and dataset.</li>
 
 
-  <li><b>MakeTripletset.py </b> - A pyfile that builds images into tripletsets at specific intervals.</li>
+  <li><b> MakeTripletset.py </b> - A pyfile that builds images into tripletsets at specific intervals.</li>
 
 
 
@@ -92,7 +92,7 @@ The photo above shows an image from an earlier point in time, an interpolated im
 
 
 # Model Pipeline
--   The pipeline of our final proposed model is SF-AdaCoF. 
+-   The pipeline of our final proposed model is **SF-AdaCoF****. **
 ![stronghold logo](img/PROCESS.png)
 
 The main techniques of the model are described below.
@@ -104,7 +104,7 @@ The main techniques of the model are described below.
 
 
 
-SF-AdaCoF의 핵심 기술은 다음과 같습니다.
+**SF-AdaCoF**의 핵심 기술은 다음과 같습니다.
 
 1. 이전 이후 이미지가 각각의 처리를 거칩니다.
 2. 이전 이후 이미지는 U-NET 구조를 거치며 featuremap differencing을 통해 서로 정보를 주고 받습니다.
@@ -127,6 +127,11 @@ SF-AdaCoF의 핵심 기술은 다음과 같습니다.
 ![stronghold logo](img/Result2.png)
 
 
+And we show **SF-AdaCoF** evaluation with various datasets.
+
+그리고 **SF-AdaCoF**의 다양한 실험결과를 보여드립니다.
+
+![stronghold logo](img/eval.png)
 <h5>We found that our method produced a model with better performance and less computation than the original Adacof model!</h5>
 
 
