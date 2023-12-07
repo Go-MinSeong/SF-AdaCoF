@@ -21,8 +21,8 @@ We build a new model based on the existing video frame interpolation model "AdaC
 우리는 기존 "AdaCoF: Adaptive Collaboration of Flows for Video Frame Interpolation"을 기반으로 하여 새로운 video frame interpolation deeplearning model을 제작하였습니다.
 
 <p float="center">
-  <img src="gif/before3.gif" alt="Animated gif pacman game" height="148px" width="262px" />
-  <img src="gif/after3.gif" alt="Animated gif pacman game" height="148px" width="262px" />
+  <img src="gif/before4.gif" alt="Animated gif pacman game" height="360px" width="640px" />
+  <img src="gif/after4.gif" alt="Animated gif pacman game" height="360px" width="640px" />
 </p>
 
 The video file on the left was extracted from YouTube and changed to 12 FPS. We then used our model to interpolate the images to create the right video file at 48 FPS.
