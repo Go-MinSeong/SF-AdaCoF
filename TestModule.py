@@ -9,10 +9,9 @@ from skimage.metrics import structural_similarity as SSIM
 from glob import glob
 import random
 import numpy as np
-
+from tqdm import tqdm
 random.seed(0)
-# random_numbers = random.sample(range(1, 40000), 1000)
-random_numbers = random.sample(range(0,25843),1000)
+
 
 class Middlebury_other:
     def __init__(self, input_dir, gt_dir):
@@ -27,10 +26,12 @@ class Middlebury_other:
             self.input1_list.append(to_variable(self.transform(Image.open(input_dir + '/' + item + '/frame11.png')).unsqueeze(0)))
             self.gt_list.append(to_variable(self.transform(Image.open(gt_dir + '/' + item + '/frame10i11.png')).unsqueeze(0)))
 
-    def Test(self, model, output_dir, current_epoch, logfile=None, output_name='output.png'):
+    def Test(self, model, output_dir, current_epoch, logfile=None, output_name='output.png', store_true=False):
         model.eval()
         av_psnr = 0
         av_ssim = 0
+        psnr_lst = []
+        ssim_lst = []
         print(len(self.im_list))
         for idx in range(len(self.im_list)):
             if not os.path.exists(output_dir + '/' + self.im_list[idx]):
@@ -41,12 +42,15 @@ class Middlebury_other:
             ssim = SSIM(frame_out.squeeze(0).detach().cpu().numpy().transpose(1,2,0)*255,gt.squeeze(0).detach().cpu().numpy().transpose(1,2,0)*255,data_range = 255,multichannel = True) 
             av_psnr += psnr
             av_ssim += ssim
-            imwrite(frame_out, output_dir + '/' + self.im_list[idx] + '/' + output_name, range=(0, 1))
+            if store_true== True:
+                imwrite(frame_out, output_dir + '/' + self.im_list[idx] + '/' + output_name, range=(0, 1))
             msg = f'{self.im_list[idx] } : PSNR : {psnr} | SSIM : {ssim}' + '\n'
+            psnr_lst.append(psnr)
+            ssim_lst.append(ssim)
             print(msg, end='')
         av_psnr /= len(self.im_list)
         av_ssim /= len(self.im_list)
-        msg = 'Middlebury_other' + '\n' f'Average_PSNR : {av_psnr} & Average_SSIM : {av_ssim}' + '\n'
+        msg = 'Middlebury_other'+ '\n'+ f'Average_PSNR : {av_psnr} std_PSNR : {np.std(psnr_lst)} & Average_SSIM : {av_ssim} std_SSIM : {np.std(ssim_lst)}' + '\n'
         print(msg, end='')
         if logfile is not None:
             logfile.write('-------'+'\n')
@@ -65,10 +69,12 @@ class Davis:
             self.input1_list.append(to_variable(self.transform(Image.open(input_dir + '/' + item + '/frame11.png')).unsqueeze(0)))
             self.gt_list.append(to_variable(self.transform(Image.open(gt_dir + '/' + item + '/frame10i11.png')).unsqueeze(0)))
 
-    def Test(self, model, output_dir, logfile=None, output_name='output.png'):
+    def Test(self, model, output_dir, logfile=None, output_name='output.png', store_true=False):
         model.eval()
         av_psnr = 0
         av_ssim = 0
+        psnr_lst = []
+        ssim_lst = []
         for idx in range(len(self.im_list)):
             if not os.path.exists(output_dir + '/' + self.im_list[idx]):
                 os.makedirs(output_dir + '/' + self.im_list[idx])
@@ -78,12 +84,15 @@ class Davis:
             ssim = SSIM(frame_out.squeeze(0).detach().cpu().numpy().transpose(1,2,0)*255,gt.squeeze(0).detach().cpu().numpy().transpose(1,2,0)*255,data_range = 255,multichannel = True)
             av_psnr += psnr
             av_ssim += ssim
-            imwrite(frame_out, output_dir + '/' + self.im_list[idx] + '/' + output_name, range=(0, 1))
+            if store_true== True:
+                imwrite(frame_out, output_dir + '/' + self.im_list[idx] + '/' + output_name, range=(0, 1))
             msg =  f'{self.im_list[idx] } : PSNR : {psnr} | SSIM : {ssim}' + '\n'
+            psnr_lst.append(psnr)
+            ssim_lst.append(ssim)
             print(msg, end='')
         av_psnr /= len(self.im_list)
         av_ssim /= len(self.im_list)
-        msg = 'Davis' + '\n'+ f'Average_PSNR : {av_psnr} & Average_SSIM : {av_ssim}' + '\n'
+        msg = 'Davis'+ '\n'+ f'Average_PSNR : {av_psnr} std_PSNR : {np.std(psnr_lst)} & Average_SSIM : {av_ssim} std_SSIM : {np.std(ssim_lst)}' + '\n'
         print(msg, end='')
         if logfile is not None:
             logfile.write('-------'+'\n')
@@ -103,10 +112,12 @@ class ucf:
             self.input1_list.append(to_variable(self.transform(Image.open(input_dir + '/' + item + '/frame_02.png')).unsqueeze(0)))
             self.gt_list.append(to_variable(self.transform(Image.open(input_dir + '/' + item + '/frame_01_gt.png')).unsqueeze(0)))
 
-    def Test(self, model, output_dir,logfile=None, output_name='output.png'):
+    def Test(self, model, output_dir,logfile=None, output_name='output.png', store_true=False):
         model.eval()
         av_psnr = 0
         av_ssim = 0
+        psnr_lst = []
+        ssim_lst = []
         for idx in range(len(self.im_list)):
             if not os.path.exists(output_dir + '/' + self.im_list[idx]):
                 os.makedirs(output_dir + '/' + self.im_list[idx])
@@ -116,12 +127,15 @@ class ucf:
             ssim = SSIM(frame_out.squeeze(0).detach().cpu().numpy().transpose(1,2,0)*255,gt.squeeze(0).detach().cpu().numpy().transpose(1,2,0)*255,data_range = 255,multichannel = True)
             av_psnr += psnr
             av_ssim += ssim
-            imwrite(frame_out, output_dir + '/' + self.im_list[idx] + '/' + output_name, range=(0, 1))
+            if store_true== True:
+                imwrite(frame_out, output_dir + '/' + self.im_list[idx] + '/' + output_name, range=(0, 1))
             msg = f'{self.im_list[idx] } : PSNR : {psnr} | SSIM : {ssim}' + '\n'
+            psnr_lst.append(psnr)
+            ssim_lst.append(ssim)
             print(msg, end='')
         av_psnr /= len(self.im_list)
         av_ssim /= len(self.im_list)
-        msg = 'ucf101' + '\n'+ f'Average_PSNR : {av_psnr} & Average_SSIM : {av_ssim}' + '\n'
+        msg = 'ucf101' + '\n'+ f'Average_PSNR : {av_psnr} std_PSNR : {np.std(psnr_lst)} & Average_SSIM : {av_ssim} std_SSIM : {np.std(ssim_lst)}' + '\n'
         print(msg, end='')
         if logfile is not None:
             logfile.write('-------'+'\n')
@@ -148,7 +162,7 @@ class Test_Dancing:
             self.input1_list.append(to_variable(self.transform(Image.open(input_dir + '/sequences/00001/' + item + '/im3.jpg')).unsqueeze(0)))
             self.gt_list.append(to_variable(self.transform(Image.open(input_dir + '/sequences/00001/' + item + '/im2.jpg')).unsqueeze(0)))
 
-    def Test(self, model, output_dir, current_epoch ,logfile=True, output_name='output.jpg'):
+    def Test(self, model, output_dir, current_epoch ,logfile=True, output_name='output.jpg', store_true=False):
         model.eval()
         av_psnr = 0
         av_ssim = 0
@@ -161,7 +175,8 @@ class Test_Dancing:
             ssim = SSIM(frame_out.squeeze(0).detach().cpu().numpy().transpose(1,2,0)*255,gt.squeeze(0).detach().cpu().numpy().transpose(1,2,0)*255,data_range = 255,multichannel = True)
             av_psnr += psnr
             av_ssim += ssim
-            imwrite(frame_out, output_dir + '/' + self.im_list[idx] + '/' + output_name, range=(0, 1))
+            if store_true== True:
+                imwrite(frame_out, output_dir + '/' + self.im_list[idx] + '/' + output_name, range=(0, 1))
             msg =  f'{self.im_list[idx] } : PSNR : {psnr} | SSIM : {ssim}' + '\n'
             print(msg, end='')
         av_psnr /= len(self.im_list)
@@ -171,7 +186,8 @@ class Test_Dancing:
         if logfile is not None:
             logfile.write('-------'+'\n')
             logfile.write(msg)
-class Vimeo_test:
+
+class Vimeo_test():
     def __init__(self,input_dir):
         # test 이미지 가져오기
         self.im_list = []
@@ -186,68 +202,80 @@ class Vimeo_test:
         self.input0_list = []
         self.input1_list = []
         self.gt_list = []
-        for item in self.im_list:
-            self.input0_list.append(to_variable(self.transform(Image.open(input_dir + '/sequences/' + item + '/im1.png')).unsqueeze(0)))
-            self.input1_list.append(to_variable(self.transform(Image.open(input_dir + '/sequences/' + item + '/im3.png')).unsqueeze(0)))
-            self.gt_list.append(to_variable(self.transform(Image.open(input_dir + '/sequences/' + item + '/im2.png')).unsqueeze(0)))
+        for item in tqdm(self.im_list):
+            self.input0_list.append(input_dir + '/sequences/' + item + '/im1.png')
+            self.input1_list.append(input_dir + '/sequences/' + item + '/im3.png')
+            self.gt_list.append(input_dir + '/sequences/' + item + '/im2.png')
 
-    def Test(self, model, output_dir, current_epoch ,logfile=None, output_name='output.jpg'):
+    def Test(self, model, output_dir, current_epoch ,logfile=None, output_name='output.jpg', store_true=False):
         model.eval()
         av_psnr = 0
         av_ssim = 0
+        psnr_lst = []
+        ssim_lst = []
         for idx in range(len(self.im_list)):
             if not os.path.exists(output_dir + '/' + self.im_list[idx]):
                 os.makedirs(output_dir + '/' + self.im_list[idx])
-            frame_out = model(self.input0_list[idx], self.input1_list[idx])
-            gt = self.gt_list[idx]
+            prev_img = to_variable(self.transform(Image.open(self.input0_list[idx])).unsqueeze(0))
+            next_img = to_variable(self.transform(Image.open(self.input1_list[idx])).unsqueeze(0))
+            gt = to_variable(self.transform(Image.open(self.gt_list[idx])).unsqueeze(0))
+            frame_out = model(prev_img, next_img)
             psnr = -10 * log10(torch.mean((gt - frame_out) * (gt - frame_out)).item())
             ssim = SSIM(frame_out.squeeze(0).detach().cpu().numpy().transpose(1,2,0)*255,gt.squeeze(0).detach().cpu().numpy().transpose(1,2,0)*255,data_range = 255,multichannel = True)
             av_psnr += psnr
             av_ssim += ssim
-            imwrite(frame_out, output_dir + '/' + self.im_list[idx] + '/' + output_name, range=(0, 1))
+            if store_true == True:
+                imwrite(frame_out, output_dir + '/' + self.im_list[idx] + '/' + output_name, range=(0, 1))
             msg = f'{self.im_list[idx] } : PSNR : {psnr} | SSIM : {ssim}' + '\n'
+            psnr_lst.append(psnr)
+            ssim_lst.append(ssim)
             print(msg, end='')
         av_psnr /= len(self.im_list)
         av_ssim /= len(self.im_list)
-        msg =  'vimeo' + '\n'+ f'Average_PSNR : {av_psnr} & Average_SSIM : {av_ssim}' + '\n'
+        msg =  'vimeo' + '\n'+ f'Average_PSNR : {av_psnr} std_PSNR : {np.std(psnr_lst)} & Average_SSIM : {av_ssim} std_SSIM : {np.std(ssim_lst)}' + '\n'
+
         print(msg, end='')
         if logfile is not None:
             logfile.write('-------'+'\n')
             logfile.write(msg)
         
 class Youtube:
-    def __init__(self,input_dir):
-        self.im_list = np.array([i.replace(input_dir,'') for i in glob(f'{input_dir}/*')])[random_numbers]
+    def __init__(self, input_dir , seed):
+        random.seed(seed)
+        self.im_list = np.array([i.replace(input_dir,'') for i in glob(f'{input_dir}/*')])
+        self.random_numbers = random.sample(range(0,len(self.im_list)),1000)
+        self.im_list = self.im_list[self.random_numbers]
         self.transform = transforms.Compose([transforms.ToTensor()])
         self.dataset_name = input_dir[input_dir.rindex('/')+1:]
         self.input0_list = []
         self.input1_list = []
         self.gt_list = []
         for item in self.im_list:
-            self.input0_list.append(to_variable(self.transform(Image.open(input_dir + '/' + item + '/1.png')).unsqueeze(0)))
-            self.input1_list.append(to_variable(self.transform(Image.open(input_dir + '/' + item + '/3.png')).unsqueeze(0)))
-            self.gt_list.append(to_variable(self.transform(Image.open(input_dir + '/' + item + '/2.png')).unsqueeze(0)))
+            self.input0_list.append(input_dir + '/' + item + '/1.png')
+            self.input1_list.append(input_dir + '/' + item + '/3.png')
+            self.gt_list.append(input_dir + '/' + item + '/2.png')
 
-    def Test(self, model, output_dir,logfile=None, output_name='output.jpg'):
+    def Test(self, model, output_dir,logfile=None, output_name='output.jpg', store_true=False):
         model.eval()
         av_psnr = 0
         av_ssim = 0
-        for idx in range(len(self.im_list)):
+        psnr_lst = []
+        ssim_lst = []
+        for idx in tqdm(range(len(self.im_list))):
             if not os.path.exists(output_dir + '/' + self.im_list[idx]):
                 os.makedirs(output_dir + '/' + self.im_list[idx])
-            frame_out = model(self.input0_list[idx], self.input1_list[idx])
-            gt = self.gt_list[idx]
+            prev_img = to_variable(self.transform(Image.open(self.input0_list[idx])).unsqueeze(0))
+            next_img = to_variable(self.transform(Image.open(self.input1_list[idx])).unsqueeze(0))
+            gt = to_variable(self.transform(Image.open(self.gt_list[idx])).unsqueeze(0))
+            frame_out = model(prev_img, next_img)
             psnr = -10 * log10(torch.mean((gt - frame_out) * (gt - frame_out)).item())
             ssim = SSIM(frame_out.squeeze(0).detach().cpu().numpy().transpose(1,2,0)*255,gt.squeeze(0).detach().cpu().numpy().transpose(1,2,0)*255,data_range = 255,multichannel = True)
             av_psnr += psnr
             av_ssim += ssim
-            imwrite(frame_out, output_dir + '/' + self.im_list[idx] + '/' + output_name, range=(0, 1))
+            if store_true == True:
+                imwrite(frame_out, output_dir + '/' + self.im_list[idx] + '/' + output_name, range=(0, 1))
             msg = f'{self.im_list[idx] } : PSNR : {psnr} | SSIM : {ssim}' + '\n'
-            print(msg, end='')
-        av_psnr /= len(self.im_list)
-        av_ssim /= len(self.im_list)
-        msg =  f'{self.dataset_name}' + '\n'+ f'Average_PSNR : {av_psnr} & Average_SSIM : {av_ssim}' + '\n'
-        print(msg, end='')
-        if logfile is not None:
-            logfile.write('-------'+'\n')
-            logfile.write(msg)
+            psnr_lst.append(psnr)
+            ssim_lst.append(ssim)
+            # print(msg, end='')
+        return psnr_lst, ssim_lst
