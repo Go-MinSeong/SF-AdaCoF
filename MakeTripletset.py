@@ -31,7 +31,7 @@ def main():
 
             filepath = args.source_folder+stream.title+".mp4"
         except:
-            title = ''.join(args.name.split("_")[:-1])
+            title = args.name
             filepath = args.source_folder+title+".mp4"
         print(filepath)
         video = cv2.VideoCapture(filepath)

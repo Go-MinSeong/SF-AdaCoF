@@ -1,24 +1,20 @@
-<h1 align = "center"> VideoFrameInterpolation_SF-AdaCoF </h1>
+<h1 align = "center"> Simaese Feature map - AdaCoF </h1>
 
 <h1 align="center"> VideoFrameInterpolation </h1>
 
-<h1 align="center"> VFI Model </h1>
+<h3 align="center"> Capstone Project  (2022-09 ~ 2023-09) </h3>
 
-<h5 align="center"> Capstone Project  (2022-09 ~ 2023-09) </h5>
+<br/><br/>
+`VideoFrameInterpolation` **is the Image interpolation is the process of estimating new pixel values in an image based on the values of surrounding pixels.
+We want to perform this image interpolation using computer vision techniques.**
 
-* This repository is still a work in progress.
-
-`VideoFrameInterpolation_Dance` is the Image interpolation is the process of estimating new pixel values in an image based on the values of surrounding pixels.
-We want to perform this image interpolation using computer vision techniques.
-We want to focus on interpolation in an image with an object in the center.
-
-We build a new model based on the existing video frame interpolation model "AdaCoF: Adaptive Collaboration of Flows for Video Frame Interpolation".
-`We propose a video frame interpolation model that can be more motion-oriented and object-oriented for dance data, expecting to improve performance and reduce parameters with the new model.`
+**We build a new model(SF-AdaCoF) based on the existing video frame interpolation model "AdaCoF: Adaptive Collaboration of Flows for Video Frame Interpolation".**
+`We propose a video frame interpolation model expects to improve performance and reduces parameters with the new model.`
 
 비디오 프레임 보간은 이전 이후 프레임을 이용하여 가운데 프레임을 추정하는 작업입니다.
 우리는 컴퓨터 비전 기술을 이용하여 이를 수행하였습니다.
 
-우리는 기존 "AdaCoF: Adaptive Collaboration of Flows for Video Frame Interpolation"을 기반으로 하여 새로운 video frame interpolation deeplearning model을 제작하였습니다.
+**우리는 기존 "AdaCoF: Adaptive Collaboration of Flows for Video Frame Interpolation"을 기반으로 하여 새로운 Simaese Feature map - AdaCoF를 제작하였습니다.**
 
 <p float="center">
   <img src="gif/before.gif" alt="Animated gif pacman game" height="216px" width="388px" />
@@ -50,37 +46,42 @@ The photo above shows an image from an earlier point in time, an interpolated im
 
 <h2> Project Files Description </h2>
 
-<h4>Directories:</h4>
+<h3>Directories</h3>
 <ul>
-  
-  <li><b> vimeo folder </b> - Inside the dancing folder, there are folders of models(AdaCoF_all_share, AdaCoF_ori, AdaCoF_1, AdaCoF_2, AdaCoF_3, AdaCoF_4-2, AdaCoF_5-2 etc..) trained with vimeo data, each trained in a different way.
-  And inside each model folder, we have the model folder, train.py, and trainer.py needed to train the model, and we have the model trained to 50 epochs and 60 epochs.
+  <br/>
+  <li><b> vimeo folder </b> - Inside the dancing folder, there are folders of models(AdaCoF, SF_AdaCoF_CP, SF_AdaCoF_RWTD, SF_AdaCoF_RWTDCP, SF_AdaCoF_noShare, SF_AdaCoF) trained with vimeo data, each trained in a different way.
+  And inside each model folder, we have the model folder, train.py, and trainer.py needed to train the model, and we have the model trained to 50 epochs and 60 epochs. SF_AdaCoF is our final model.
 
-
+<br/>
   <li><b>interpolate_img folder</b> - This is the folder that contains the before and after images for each model.</li>
 
-
+<br/>
   <li><b>interpolate_video folder</b> - This is the folder that contains the before and after videos for each model.</li>
 
 </ul>
 
 
 
-<h4>Executable Files:</h4>
+<h3>Executable Files</h3>
 <ul>
-  
+  <br/>
   <li><b> interpolate_image.py </b> - A pyfile that runs image interpolation after specifying a particular model.
-
+<br/><br/>
 
   <li><b> interpolate_video.py </b> - A pyfile that runs video interpolation after specifying a particular model.</li>
-
+<br/>
   <li><b> (New) interpolate_inference.py </b> - A pyfile that runs folder or video or Youtube URL interpolation after specifying a particular model. you can choose various option from config.yaml for interpolation. If you want to inference this code, I recommend you use this. </li>
-
+<br/>
   <li><b> evaluation.py </b> - A pyfile that calculates the PSNR, SSIM score of a model by specifying a specific model and dataset.</li>
 
-
+<br/>
   <li><b> MakeTripletset.py </b> - A pyfile that builds images into tripletsets at specific intervals.</li>
 
+<br/>
+  <li><b> interpolate.sh </b> - A file that contains some example to start this process </li>
+
+
+<br/><br/>
 
 
 
@@ -88,38 +89,36 @@ The photo above shows an image from an earlier point in time, an interpolated im
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-
+<br/>
 
 
 # Model Pipeline
--   The pipeline of our final proposed model is **SF-AdaCoF****. **
-![stronghold logo](img/PROCESS.png)
+-   **The pipeline of our final proposed model is** **SF-AdaCoF**<br/><br/> 
+![stronghold logo](img/model.png)
 
-The main techniques of the model are described below.
+**The main techniques of the model are described below.**
 
-1. Progress in two directions
-2. Models that can inject Featuremap differencing information
-   
-  + Gradient sharing
+**1. Progress in two directions**<br/>
+**2. Models that can inject Featuremap differencing information**<br/>
+**3. Gradient sharing**
 
-
+<br/>
 
 **SF-AdaCoF**의 핵심 기술은 다음과 같습니다.
 
-1. 이전 이후 이미지가 각각의 처리를 거칩니다.
-2. 이전 이후 이미지는 U-NET 구조를 거치며 featuremap differencing을 통해 서로 정보를 주고 받습니다.
+**1. 이전 이후 이미지가 각각의 처리를 거칩니다.**<br/>
 
-  + 각 U-Net의 Encoder부분에서는 가중치를 공유합니다.
+**2. 이전 이후 이미지는 U-NET 구조를 거치며 featuremap differencing을 통해 서로 정보를 주고 받습니다.**<br/>
+
+**3. 각 U-Net의 Encoder부분에서는 가중치를 공유합니다.**
 
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
 
 
-# Model evaluation
+# Model Evaluation
 -   Below is a table of results from evaluating the different models we devised on different datasets.
-
-'원본 Adacof' refers to the original Adacof model and the other models are the models we devised.
 
 아래는 다양한 데이터 셋으로 우리의 모델을 평가한 그림입니다.
 
@@ -131,7 +130,7 @@ And we show **SF-AdaCoF** evaluation with various datasets.
 
 그리고 **SF-AdaCoF**의 다양한 실험결과를 보여드립니다.
 
-![stronghold logo](img/eval.png)
+![stronghold logo](img/result.png)
 <h5>We found that our method produced a model with better performance and less computation than the original Adacof model!</h5>
 
 
@@ -139,6 +138,40 @@ And we show **SF-AdaCoF** evaluation with various datasets.
 
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
+
+
+
+# Model Inference
+
+
+### Inference
+Additionaly we made a Triplet Youtube datasets for testing big difference between prev iamge and next image. We collect data from Youtube video that is K-POP Dancing. 
+<br/>
+
+```
+MakeTripletset.py --video_url [LINK] --name [Youtube Video Title] --start [Extract start frame] --end [Extract end frame] --interval [Interval]
+```
+
+### Evaluation
+Additionaly we made a Triplet Youtube datasets for testing big difference between prev iamge and next image. We collect data from Youtube video that is K-POP Dancing. 
+<br/>
+
+```
+MakeTripletset.py --video_url [LINK] --name [Youtube Video Title] --start [Extract start frame] --end [Extract end frame] --interval [Interval]
+```
+### Make Datasets
+
+  Additionaly we made a Triplet Youtube datasets for testing big difference between prev iamge and next image. We collect data from Youtube video that is K-POP Dancing. 
+<br/>
+
+```
+MakeTripletset.py --video_url [LINK] --name [Youtube Video Title] --start [Extract start frame] --end [Extract end frame] --interval [Interval]
+```
+
+
+
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
+
 
 
 
