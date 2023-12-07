@@ -1,4 +1,5 @@
-#pip install cupy-cuda111
+#pip install cupy-cuda113
+#conda install pytorch==1.11.0 torchvision==0.12.0 torchaudio==0.11.0 cudatoolkit=11.3 -c pytorch
 import os
 import argparse
 from PIL import Image
@@ -78,7 +79,7 @@ def convert_mp4_to_gif(input_file, output_file, fps=30):
     reader = imageio.get_reader(input_file)
 
     # GIF로 저장할 비디오 작성기 생성
-    writer = imageio.get_writer(output_file, duration=1/fps)
+    writer = imageio.get_writer(output_file, fps = fps)
 
     # 각 프레임을 GIF에 추가
     for frame in reader:

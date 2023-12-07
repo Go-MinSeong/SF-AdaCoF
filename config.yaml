@@ -1,7 +1,7 @@
 # 보간할 이미지를 모아둔 폴더
-input_folder : '/home/kms990321/DiffBIR/project/frames_SR_after'
+input_folder : 'frames'
 # 결과물을 모아둘 폴더
-output_folder : '/home/kms990321/DiffBIR/project/frames_VFI'
+output_folder : 'frames_VFI'
 # 모델 결정
 model_type : 'SF_AdaCoF'
 # 모델 학습 pth 결정  you can choose 50(just train with l1 loss) or 60(+10 train with gan loss)

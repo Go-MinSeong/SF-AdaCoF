@@ -1,5 +1,6 @@
 *.avi
 *.mp4
 *.DS_Store
-frames
-frames_VFI
+frames/
+frames_VFI/
+img/
