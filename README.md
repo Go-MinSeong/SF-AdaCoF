@@ -93,7 +93,7 @@ The photo above shows an image from an earlier point in time, an interpolated im
 
 
 # Model Pipeline
--   **The pipeline of our final proposed model is** **SF-AdaCoF**<br/><br/> 
+-   **The pipeline of our final proposed model is** **SF-AdaCoF**<br/><br/>
 ![stronghold logo](img/model.png)
 
 **The main techniques of the model are described below.**
