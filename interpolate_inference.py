@@ -239,7 +239,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-# python interpolate_inference.py --repeat 2    # png파일이 들어있는 폴더를 보간하고 싶을 경우
-# python interpolate_inference.py --mp4_own "" --repeat 2   # 소유한 영상을 보간하고 싶을 경우
-# python interpolate_inference.py --frame 12 --url_path "https://www.youtube.com/watch?v=EMQaCq-S-LE" --repeat 2  # Youtube url을 가지고 해당 영상을 보간하고 싶을 경우 frame 유튜브 영상을 몇 frame으로 가져오고 싶은지 25이하 설정 권장
