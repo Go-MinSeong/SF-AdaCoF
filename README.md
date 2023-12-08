@@ -165,7 +165,7 @@ If you want to excute the process, follow this code. And you have to amend the c
 ```
 interpolate_inference.py --repeat [int : count]    # png파일이 들어있는 폴더를 보간하고 싶을 경우 
 
-python interpolate_inference.py --mp4_own "" --repeat 2   # 소유한 영상을 보간하고 싶을 경우
+python interpolate_inference.py --mp4_own [video path] --repeat [int:count]  # 소유한 영상을 보간하고 싶을 경우
 
 python interpolate_inference.py --frame [Subtract FPS] --url_path [Youtube Link] --repeat [int:count]  # Youtube url을 가지고 해당 영상을 보간하고 싶을 경우 frame 유튜브 영상을 몇 frame으로 가져오고 싶은지 25이하 설정 권장
 
