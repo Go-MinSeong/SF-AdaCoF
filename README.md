@@ -156,7 +156,7 @@ pip install opencv-python
 pip install cupy-cuda113
 ```
 
-The rest modules that you have install are looked at **environment.yml**.
+The rest modules that you have to install are looked at **environment.yml**.
 
 ### Inference
 If you want to excute the process, follow this code. And you have to amend the condfig.yaml
