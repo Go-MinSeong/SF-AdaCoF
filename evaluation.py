@@ -10,7 +10,7 @@ parser.add_argument('--gpu_id', type=int, default=0)
 parser.add_argument('--training_from',type=str,default='vimeo')
 parser.add_argument('--model', type=str, default='model')
 parser.add_argument('--model_dir', type=str, default='AdaCoF_ori')
-parser.add_argument('--checkpoint', type=str, default='model50.pth')
+parser.add_argument('--checkpoint', type=str, default='model50.pth') # you can choose 50 or 60
 parser.add_argument('--log', type=str, default='./test_log.txt')
 parser.add_argument('--store_true', type=bool, default=False)
 parser.add_argument('--out_dir', type=str, default='./result')

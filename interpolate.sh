@@ -45,4 +45,4 @@
 
 
 # Evaluation
-# python /home/work/capstone/SF-AdaCoF/evaluation.py --model_dir "SF_AdaCoF"
+# python /home/work/capstone/SF-AdaCoF/evaluation.py --model_dir "SF_AdaCoF" --want_data "Vimeo"

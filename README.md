@@ -143,22 +143,47 @@ And we show **SF-AdaCoF** evaluation with various datasets.
 
 # Model Inference
 
+### Environment
+**Python = 3.8**<br/>
+**Cuda = 11.3**
+<br/>
+
+```
+conda create -n "SF_AdaCoF" python=3.8 -y
+conda activate SF_AdaCoF
+conda install pytorch==1.11.0 torchvision==0.12.0 torchaudio==0.11.0 cudatoolkit=11.3 -c pytorch
+pip install opencv-python
+pip install cupy-cuda113
+```
+
+The rest modules that you have install are looked at **environment.yml**.
 
 ### Inference
-Additionaly we made a Triplet Youtube datasets for testing big difference between prev iamge and next image. We collect data from Youtube video that is K-POP Dancing. 
+If you want to excute the process, follow this code. And you have to amend the condfig.yaml
 <br/>
 
 ```
-MakeTripletset.py --video_url [LINK] --name [Youtube Video Title] --start [Extract start frame] --end [Extract end frame] --interval [Interval]
+interpolate_inference.py --repeat [int : count]    # png파일이 들어있는 폴더를 보간하고 싶을 경우 
+
+python interpolate_inference.py --mp4_own "" --repeat 2   # 소유한 영상을 보간하고 싶을 경우
+
+python interpolate_inference.py --frame [Subtract FPS] --url_path [Youtube Link] --repeat [int:count]  # Youtube url을 가지고 해당 영상을 보간하고 싶을 경우 frame 유튜브 영상을 몇 frame으로 가져오고 싶은지 25이하 설정 권장
+
 ```
+
+**repeat** means that how many interpolate you want? if you input 1 you can get twice frames or 2 you can get quintuple frames.
+
+
 
 ### Evaluation
-Additionaly we made a Triplet Youtube datasets for testing big difference between prev iamge and next image. We collect data from Youtube video that is K-POP Dancing. 
+If you want to verify our result that you can use it. And you have to amend the condfig.yaml
 <br/>
 
 ```
-MakeTripletset.py --video_url [LINK] --name [Youtube Video Title] --start [Extract start frame] --end [Extract end frame] --interval [Interval]
+evaluation.py --model_dir [Model_name] --want_data [Dataset_Name]
 ```
+You can check the result in **test_log.txt**.
+
 ### Make Datasets
 
   Additionaly we made a Triplet Youtube datasets for testing big difference between prev iamge and next image. We collect data from Youtube video that is K-POP Dancing. 
